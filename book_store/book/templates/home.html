@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    home
+{% endblock title %}
+    
+{% block content %}
+
+    <!-- Hero Section -->
+    <section class="bg-cover bg-center h-screen" style="background-image: url('https://images.pexels.com/photos/2099266/pexels-photo-2099266.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+        <div class="flex items-center justify-center h-full bg-gray-900 bg-opacity-50">
+            <div class="text-center">
+                <h1 class="text-white text-5xl font-bold">Welcome to Our Bookstore</h1>
+                <p class="text-white mt-4 text-xl">Discover a world of knowledge with our collection of books</p>
+                <a href="{% url 'show_book' %}" class="mt-8 inline-block bg-blue-600 hover:bg-blue-800 text-white font-semibold py-3 px-6 rounded-lg">Visit Book</a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Featured Books Section -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-bold text-gray-900">Featured Books</h2>
+                <p class="mt-2 text-gray-600">Hand-picked books just for you!</p>
+            </div>
+            <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+
+                
+                {% for item in book %}
+                    <!-- Book Card -->
+                <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                    <img src="https://img.freepik.com/free-photo/book-composition-with-open-book_23-2147690555.jpg" alt="Book Image" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-900">{{item.id}} . {{item.book_name}} </h3>
+                        <p class="mt-2 text-gray-600">A brief description of the book that gives the user an idea of what it’s about.</p>
+                        <div class="mt-4">
+                            <span class="text-xl font-bold text-blue-600">$19.99</span>
+                            <a href="{% url 'book_detail' item.id %}" class="ml-4 inline-block bg-blue-600 hover:bg-blue-800 text-white font-semibold py-2 px-4 rounded-lg">Details</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                    
+                
+
+                <!-- Additional book cards can be added in similar format -->
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="text-center text-white">
+                <p>&copy; 2024 BookStore. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+{% endblock content %}
+    

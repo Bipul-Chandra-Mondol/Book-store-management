@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load tailwind_filters %}
+
+{% block content %}
+    
+<div class="w-1/2 mx-auto">
+    <h1 class="text-2xl text-center my-4">Welcome to Book Store Management</h1>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form|crispy}}
+        <button type="submit" class="mt-4 px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+            Submit
+        </button>
+    </form>
+</div>
+
+{% endblock content %}
+    

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{book.book_name}}
+{% endblock title %}
+
+
+{% block content %}
+<div class="container mx-auto py-8">
+    <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+        <img src="https://img.freepik.com/free-photo/book-composition-with-open-book_23-2147690555.jpg" alt="{{ book.book_name }}" class="w-full h-64 object-cover">
+        <div class="p-6">
+            <h1 class="text-4xl font-bold text-gray-900">{{ book.book_name }}</h1>
+            <p class="mt-2 text-gray-600">Author: <span class="font-medium">{{ book.author }}</span></p>
+            <p class="mt-2 text-gray-600">Category: <span class="font-medium">{{ book.category }}</span></p>
+            <p class="mt-4 text-gray-600">Published on: <span class="font-medium">{{ book.first_pub|date:"F j, Y" }}</span></p>
+
+            <!-- If you want to allow users to download the PDF file -->
+            {% if book.pdf %}
+                <a href="{{ book.pdf.url }}" class="mt-6 inline-block bg-blue-600 hover:bg-blue-800 text-white font-semibold py-2 px-4 rounded-lg" download>Download PDF</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Back button -->
+    <div class="mt-6">
+        <a href="{% url 'home' %}" class="inline-block bg-gray-600 hover:bg-gray-800 text-white font-semibold py-2 px-4 rounded-lg">Back to home</a>
+    </div>
+</div>
+{% endblock content %}
+    

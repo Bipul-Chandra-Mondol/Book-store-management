@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block title %}
+show book list
+{% endblock title %}
+
+{% block content %}
+
+<div class="relative overflow-x-auto w-4/5 mx-auto my-2">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    ID
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Book Name
+                </th>
+                 <th scope="col" class="px-6 py-3">
+                    Author
+                </th>
+                <!-- <th scope="col" class="px-6 py-3">
+                    Category
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Price
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    First Publications
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Last Updated
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    PDF
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Action
+                </th> -->
+            </tr>
+        </thead>
+        <tbody>
+            
+            {% if booklist %}
+            {% for item in booklist %}
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <td class="px-6 py-4">
+                        {{item.id}}
+                    </td>
+                    <td class="px-6 py-4">
+                        <a href="{% url 'book_details' item.id %}">{{item.book_name}}</a>
+                    </td>
+                    <td class="px-6 py-4">
+                        {{item.author}}
+                    </td>
+                    <!-- <td class="px-6 py-4">
+                        {{item.category}}
+                    </td>
+                    <td class="px-6 py-4">
+                        100
+                    </td>
+                    <td class="px-6 py-4">
+                        {{item.first_pub}}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{item.last_pub}}
+                    </td>
+                    <td class="px-6 py-4">
+                        {% if item.pdf %}
+                            <a href="{% url 'view_pdf' item.pk %}" class="text-blue-500 hover:underline" target="_blank">View</a>
+                            <br>
+                            <a href="{{ item.pdf.url }}" class="text-blue-500 hover:underline" download>Download</a>
+                        {% else %}
+                            No PDF
+                        {% endif %}
+                    </td>
+                    <td class="px-6 py-4 flex space-x-1">
+                        <a href="{% url 'edit_book' item.id %}" class="text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:focus:ring-yellow-900">Edit</a>
+                        <a href="{% url 'delete_book' item.id%}" type="button" class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Delete</a>
+                    </td> -->
+                </tr>
+            {% endfor %}
+            
+            {% else %}
+                <h2>No data available</h2>
+            {% endif %}
+                
+            
+        </tbody>
+    </table>
+</div>
+
+{% endblock content %}
